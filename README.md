@@ -1,4 +1,0 @@
-node-mongoose
-=============
-
-Node + Mongoose

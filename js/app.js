@@ -8,7 +8,13 @@ var AppRouter = Backbone.Router.extend({
 	},
 
 	home: function() {
-		this.changePage(new HomeView());
+		var users = new UserCollection();
+		var self = this;
+		users.fetch({
+			success: function() {
+				self.changePage(new HomeView({model: users.models[0]}));
+			}
+		});		
 	},
 
 	changePage: function (page) {
