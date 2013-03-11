@@ -1,10 +1,10 @@
 var  restify = require('restify')
-	,mongoose = require('mongoose')
-	,config = require('./mongo-config')
-	,db = mongoose.connect(config.creds.mongoose_auth)
-	,Schema = mongoose.Schema,
+	,mongojs = require('mongojs')
+	,Schema = mongoose.Schema
 	,ObjectId = Schema.ObjectId;
 
+var collections = ["users", "blogPosts"];
+var db = mongojs.connect('mongodb://test:test_password@dharma.mongohq.com:10062/nfradin_fr', collections);
 
 //
 // Define Application Schemas
@@ -19,7 +19,7 @@ var UserSchema = new Schema({
 var BlogPostSchema = new Schema({
 	title	: 	{ type: String },
 	body 	: 	{ type: String },
-	author	: 	User
+	author	: 	[UserSchema]
 });
 
 
@@ -82,5 +82,3 @@ function updateUser(req, res, next) {
 
 server.post('/user', createUser);
 server.get('/user/:id', getUser);
-
-mongoose.connect('mongodb://localhost/mongodbtest');
