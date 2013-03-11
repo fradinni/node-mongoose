@@ -1,0 +1,14 @@
+{
+  "name": "node-mongoose",
+  "description": "NodeJS + Mongoose",
+  "author": "Nicolas FRADIN <fradinni@gmail.com>",
+  "version": "0.1.0",
+  "dependencies": {
+    "mongodb": ">= 1.2.13",
+    "mongoose": ">= 3.5.7",
+	"restify": ">= 2.3.4"
+  },
+  "engines": {
+    "node": ">=0.8"
+  }
+}
